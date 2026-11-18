@@ -1,4 +1,4 @@
-# Low-Latency Pub/Sub Server: Run Guide (AWS EC2)
+# Deployment Runbook (AWS EC2)
 
 C++17 epoll pub/sub server (4 I/O threads, 10 topic-sharded workers, lock-free queues, custom memory pool) with a Streamlit client.
 
@@ -12,7 +12,7 @@ Only port 22 (your IP) and 8501 are open in the security group. **Never open 555
 
 ## 1. SSH into the instance
 
-Your IP changes (hotspot, Wi-Fi), so update the security group first:
+Your IP changes (hotspot, college Wi-Fi), so update the security group first:
 
 ```powershell
 curl.exe -4 https://checkip.amazonaws.com
