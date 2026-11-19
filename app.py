@@ -80,6 +80,20 @@ st.markdown("""
 # ==========================
 # SESSION STATE INIT
 # ==========================
+import os, hmac
+
+APP_PASSWORD = os.environ.get("APP_PASSWORD")
+if not APP_PASSWORD:
+    st.error("APP_PASSWORD is not set on the server.")
+    st.stop()
+
+if not st.session_state.get("auth"):
+    pw = st.text_input("Password", type="password")
+    if pw and hmac.compare_digest(pw, APP_PASSWORD):
+        st.session_state.auth = True
+        st.rerun()
+    st.stop()
+
 if "client" not in st.session_state:
     st.session_state.client = None
 if "connected" not in st.session_state:
